@@ -1,11 +1,11 @@
 import pkg from "pg";
-import 'dotenv/config';
+import "dotenv/config";
 const { Pool } = pkg;
 
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.HOST,
-  database: process.env.DATABASE,
+  database: process.env.DB_NAME,
   port: Number(process.env.DBPORT),
   password: process.env.DB_PASSWORD,
 });
@@ -32,6 +32,5 @@ pool.on("connect", () => {
 pool.on("error", (error) => {
   console.log("error : Failed to connect to Database", error);
 });
-
 
 export default pool;
